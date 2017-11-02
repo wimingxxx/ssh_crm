@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <!-- 配置动态方法调用是否开启常量  默认是关闭的,需要开启-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+
+    <!--
+       struts.objectFactory = spring	将action的创建交给spring容器
+        struts.objectFactory.spring.autoWire = name spring负责装配Action依赖属性 默认已经打开了-->
+    <constant name="struts.objectFactory" value="spring"/>
+
+    <package name="crm1" namespace="/" extends="struts-default">
+        <!--全局允许方法调用-->
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <!--class属性值，来自applicationContext.xml 中 Action的配置-->
+        <action name="UserAction_*" class="userAction" method="{1}">
+            <result name="success">/success.jsp</result>
+        </action>
+    </package>
+</struts>
