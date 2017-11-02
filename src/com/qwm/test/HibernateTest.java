@@ -83,4 +83,20 @@ public class HibernateTest {
         transaction.commit();
         session.close();
     }
+
+    @Test
+    public void test4(){
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        User user = new User();
+        user.setUser_code("c3p0");
+        user.setUser_name("c3p0Test");
+        user.setUser_password("303030");
+
+        session.save(user);
+
+        transaction.commit();
+        session.close();
+    }
 }

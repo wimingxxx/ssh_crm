@@ -15,22 +15,21 @@
     <!--Service配置-->
     <bean name="userService" class="com.qwm.ssh_crm.service.UserServiceImpl"/>
 
-    <!-- 指定spring读取db.properties配置 -->
-    <context:property-placeholder location="classpath:db.properties"/>
-
-    <!-- 将连接池放入spring容器 -->
-    <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
-        <property name="driverClass" value="${jdbc.driverClass}"/>
-        <property name="user" value="${jdbc.user}"/>
-        <property name="password" value="${jdbc.password}"/>
-    </bean>
+ <!--   &lt;!&ndash;将SessionFactory配置到Spring容器中&ndash;&gt;
+    &lt;!&ndash;加载配置方案一：仍然使用外部的hibernate.cfg.xml配置信息&ndash;&gt;
+    <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+    </bean>-->
 
     <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <!--装配连接池-->
-        <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <props>
+                <!--  必选配置 -->
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql:///ssh_crm</prop>
+                <prop key="hibernate.connection.username">root</prop>
+                <prop key="hibernate.connection.password">xm123456</prop>
+
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 
                 <!--  可选配置 -->
