@@ -40,4 +40,4 @@
 
 [SSH与SSM学习之SSH实现CRM练习06——客户列表06_页面和测试](blog/26.md)
 
-[](blog/22.md)
+[SSH与SSM学习之SSH实现CRM练习07——BaseDao封装](blog/27.md)

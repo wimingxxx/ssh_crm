@@ -10,9 +10,5 @@ import java.util.List;
  * @date：2017/11/5 0005   0:53
  * @description：
  */
-public interface CustomerDao {
-    //查询总记录数
-    Integer getTotalCount(DetachedCriteria dc);
-    //查询分页数据
-    List<Customer> getPageList(DetachedCriteria dc, int start, Integer pageSize);
+public interface CustomerDao extends BaseDao<Customer>{
 }

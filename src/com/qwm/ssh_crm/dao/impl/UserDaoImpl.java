@@ -17,22 +17,7 @@ import java.util.List;
  * @date：2017/11/4 0004   17:25
  * @description：
  */
-public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
-//    @Override
-//    public User getByUserCode(String usercode) {
-//        //HQL方式查询
-//        return getHibernateTemplate().execute(new HibernateCallback<User>() {
-//            @Override
-//            public User doInHibernate(Session session) throws HibernateException {
-//                String sql = "from User where user_code=?";
-//                Query query = session.createQuery(sql);
-//                query.setParameter(0,usercode);
-//                User user = (User)query.uniqueResult();
-//                return user;
-//            }
-//        });
-//    }
-
+public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
     @Override
     public User getByUserCode(String usercode) {
         //Criteria 方式查询
@@ -43,10 +28,5 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
         if(list!=null && list.size()>0)
             return list.get(0);
         return null;
-    }
-
-    @Override
-    public void save(User u) {
-        getHibernateTemplate().save(u);
     }
 }
