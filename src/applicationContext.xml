@@ -19,7 +19,7 @@
     </bean>
 
     <!--Service配置-->
-    <bean name="userService" class="com.qwm.ssh_crm.service.UserServiceImpl">
+    <bean name="userService" class="com.qwm.ssh_crm.service.impl.UserServiceImpl">
         <property name="ud" ref="userDao"/>
     </bean>
 
@@ -83,7 +83,7 @@
     <!--配置织入-->
     <aop:config>
         <!--配置切入点表达式-->
-        <aop:pointcut id="txPc" expression="execution(* com.qwm.ssh_crm.service.*ServiceImpl.*(..))"/>
+        <aop:pointcut id="txPc" expression="execution(* com.qwm.ssh_crm.service.impl.*ServiceImpl.*(..))"/>
         <!--配置切面：通知+切点-->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPc"/>
     </aop:config>

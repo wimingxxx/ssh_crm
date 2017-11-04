@@ -15,9 +15,14 @@
         <!--全局允许方法调用-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
+        <global-exception-mappings>
+            <exception-mapping result="error" exception="java.lang.RuntimeException"></exception-mapping>
+        </global-exception-mappings>
+
         <!--class属性值，来自applicationContext.xml 中 Action的配置-->
         <action name="UserAction_*" class="userAction" method="{1}">
-            <result name="success">/success.jsp</result>
+            <result name="toHome" type="redirect">/index.html</result>
+            <result name="error">/login.jsp</result>
         </action>
     </package>
 </struts>

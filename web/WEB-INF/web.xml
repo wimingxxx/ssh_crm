@@ -12,7 +12,7 @@
     <!-- 配置spring配置文件位置参数 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml.2</param-value>
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
     <!--扩大session作用范围,任何过滤器一定要配置在struts2的核心过滤器之前-->
