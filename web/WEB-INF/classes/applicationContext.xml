@@ -2,10 +2,16 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
             http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context-4.3.xsd ">
+            http://www.springframework.org/schema/context/spring-context-4.3.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-4.3.xsd " >
 
     <!--Action配置 手动组装依赖  必须配置为多例模式-->
     <bean name="userAction" class="com.qwm.ssh_crm.web.action.UserAction" scope="prototype">
@@ -13,7 +19,9 @@
     </bean>
 
     <!--Service配置-->
-    <bean name="userService" class="com.qwm.ssh_crm.service.UserServiceImpl"/>
+    <bean name="userService" class="com.qwm.ssh_crm.service.UserServiceImpl">
+        <property name="ud" ref="userDao"/>
+    </bean>
 
     <!-- 指定spring读取db.properties配置 -->
     <context:property-placeholder location="classpath:db.properties"/>
@@ -42,4 +50,18 @@
         <!-- 引入orm元数据,指定orm元数据所在的包路径,spring会自动读取包中的所有配置 -->
         <property name="mappingDirectoryLocations" value="classpath:com/qwm/ssh_crm/domain"></property>
     </bean>
+
+    <!--dao配置-->
+    <bean name="userDao" class="com.qwm.ssh_crm.dao.impl.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- Hibernate 核心事务管理器-->
+    <bean name="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--开启注解事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
 </beans>

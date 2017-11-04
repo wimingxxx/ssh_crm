@@ -84,6 +84,7 @@ public class HibernateTest {
         session.close();
     }
 
+    //C3P0测试
     @Test
     public void test4(){
         Session session = sessionFactory.openSession();

@@ -15,3 +15,7 @@
 [SSH与SSM学习之SSH整合06——Hibernate与Spring整合](blog/06.md)
 
 [SSH与SSM学习之SSH整合07——Spring整合c3p0连接池](blog/07.md)
+
+[SSH与SSM学习之SSH整合08——Spring整合Hibernate环境操作数据库](blog/08.md)
+
+[SSH与SSM学习之SSH整合09——Spring的aop事务](blog/09.md)

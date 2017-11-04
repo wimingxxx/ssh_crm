@@ -8,5 +8,8 @@ import com.qwm.ssh_crm.domain.User;
  * @description：
  */
 public interface UserService {
-    User getUserByCodePassword();
+    //登陆方法
+    User getUserByCodePassword(User u);
+    //注册用户
+    void saveUser(User u);
 }
