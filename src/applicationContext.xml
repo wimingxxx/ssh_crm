@@ -13,15 +13,6 @@
             http://www.springframework.org/schema/tx
             http://www.springframework.org/schema/tx/spring-tx-4.3.xsd " >
 
-    <!--Action配置 手动组装依赖  必须配置为多例模式-->
-    <bean name="userAction" class="com.qwm.ssh_crm.web.action.UserAction" scope="prototype">
-        <property name="userService" ref="userService"/>
-    </bean>
-
-    <!--Service配置-->
-    <bean name="userService" class="com.qwm.ssh_crm.service.impl.UserServiceImpl">
-        <property name="ud" ref="userDao"/>
-    </bean>
 
     <!-- 指定spring读取db.properties配置 -->
     <context:property-placeholder location="classpath:db.properties"/>
@@ -33,6 +24,7 @@
         <property name="user" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
+
 
     <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <!--装配连接池-->
@@ -49,11 +41,6 @@
         </property>
         <!-- 引入orm元数据,指定orm元数据所在的包路径,spring会自动读取包中的所有配置 -->
         <property name="mappingDirectoryLocations" value="classpath:com/qwm/ssh_crm/domain"></property>
-    </bean>
-
-    <!--dao配置-->
-    <bean name="userDao" class="com.qwm.ssh_crm.dao.impl.UserDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <!-- Hibernate 核心事务管理器-->
@@ -87,5 +74,34 @@
         <!--配置切面：通知+切点-->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPc"/>
     </aop:config>
+
+    <!--dao配置-->
+    <bean name="userDao" class="com.qwm.ssh_crm.dao.impl.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean name="customerDao" class="com.qwm.ssh_crm.dao.impl.CustomerDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <!--Service配置-->
+    <bean name="userService" class="com.qwm.ssh_crm.service.impl.UserServiceImpl">
+        <property name="ud" ref="userDao"/>
+    </bean>
+
+    <bean name="customerService" class="com.qwm.ssh_crm.service.impl.CustomerServiceImpl">
+        <property name="cd" ref="customerDao"/>
+    </bean>
+
+    <!--Action配置 手动组装依赖  必须配置为多例模式-->
+    <bean name="userAction" class="com.qwm.ssh_crm.web.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService"/>
+    </bean>
+
+    <bean name="customerAction" class="com.qwm.ssh_crm.web.action.CustomerAction" scope="prototype">
+        <property name="cs" ref="customerService"/>
+    </bean>
+
 
 </beans>
