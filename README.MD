@@ -19,3 +19,5 @@
 [SSH与SSM学习之SSH整合08——Spring整合Hibernate环境操作数据库](blog/08.md)
 
 [SSH与SSM学习之SSH整合09——Spring的aop事务](blog/09.md)
+
+[SSH与SSM学习之SSH整合10——扩大session作用范围](blog/10.md)

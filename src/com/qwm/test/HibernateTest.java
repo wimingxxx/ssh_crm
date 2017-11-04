@@ -20,7 +20,7 @@ import javax.annotation.Resource;
  * @description： Hiberante单元测试
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:applicationContext.xml")
+@ContextConfiguration("classpath:applicationContext.xml.2")
 public class HibernateTest {
     @Test
     public void test1() {

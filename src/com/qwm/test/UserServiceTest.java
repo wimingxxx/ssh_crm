@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @description：
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:applicationContext.xml")
+@ContextConfiguration("classpath:applicationContext.xml.2")
 public class UserServiceTest {
 
     @Resource(name = "userService")
