@@ -12,6 +12,8 @@ import java.util.List;
  * 公用的Dao
  */
 public interface BaseDao<T> {
+    //增或修改
+    void saveOrUpdate(T t);
     //增
     void save(T t);
     //删

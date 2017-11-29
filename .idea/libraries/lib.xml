@@ -41,6 +41,8 @@
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/struts2-core-2.5.13.jar!/" />
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/struts2-spring-plugin-2.5.13.jar!/" />
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/com.springsource.com.mchange.v2.c3p0-0.9.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/gson-2.7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

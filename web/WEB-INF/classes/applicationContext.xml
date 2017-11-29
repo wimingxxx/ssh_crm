@@ -64,6 +64,7 @@
             <tx:method name="remove*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
             <tx:method name="get*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
             <tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
         </tx:attributes>
     </tx:advice>
 
@@ -84,6 +85,9 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean name="baseDictDao" class="com.qwm.ssh_crm.dao.impl.BaseDictDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <!--Service配置-->
     <bean name="userService" class="com.qwm.ssh_crm.service.impl.UserServiceImpl">
@@ -94,6 +98,10 @@
         <property name="cd" ref="customerDao"/>
     </bean>
 
+    <bean name="baseDictService" class="com.qwm.ssh_crm.service.impl.BaseDictServiceImpl">
+        <property name="bdd" ref="baseDictDao"/>
+    </bean>
+
     <!--Action配置 手动组装依赖  必须配置为多例模式-->
     <bean name="userAction" class="com.qwm.ssh_crm.web.action.UserAction" scope="prototype">
         <property name="userService" ref="userService"/>
@@ -101,6 +109,10 @@
 
     <bean name="customerAction" class="com.qwm.ssh_crm.web.action.CustomerAction" scope="prototype">
         <property name="cs" ref="customerService"/>
+    </bean>
+
+    <bean name="baseDictAction" class="com.qwm.ssh_crm.web.action.BaseDictAction" scope="prototype">
+        <property name="baseDictService" ref="baseDictService"/>
     </bean>
 
 

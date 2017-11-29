@@ -11,4 +11,5 @@ import java.util.List;
  * @description：
  */
 public interface CustomerDao extends BaseDao<Customer>{
+    public Customer getByUserCode(String usercode);
 }
