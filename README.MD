@@ -41,3 +41,11 @@
 [SSH与SSM学习之SSH实现CRM练习06——客户列表06_页面和测试](blog/26.md)
 
 [SSH与SSM学习之SSH实现CRM练习07——BaseDao封装](blog/27.md)
+
+[SSH与SSM学习之SSH实现CRM练习08——数据字典表](blog/28.md)
+
+[SSH与SSM学习之SSH实现CRM练习09——新增客户](blog/29.md)
+
+[](blog/)
+
+[](blog/)
