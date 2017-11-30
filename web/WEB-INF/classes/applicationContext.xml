@@ -115,5 +115,8 @@
         <property name="baseDictService" ref="baseDictService"/>
     </bean>
 
+    <bean name="uploadFileAction" class="com.qwm.ssh_crm.web.action.UploadFileAction" scope="prototype">
+        <!--<property name="baseDictService" ref="baseDictService"/>-->
+    </bean>
 
 </beans>

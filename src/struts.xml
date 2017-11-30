@@ -36,5 +36,8 @@
 
         <action name="BaseDictAction" class="baseDictAction" method="execute"/>
 
+        <action name="UploadFileAction" class="uploadFileAction" method="uploadFile">
+            <result name="success"  >/jsp/upload.jsp</result>
+        </action>
     </package>
 </struts>
