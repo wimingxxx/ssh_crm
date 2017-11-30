@@ -48,7 +48,7 @@
 
 [SSH与SSM学习之SSH实现CRM练习10——文件上传](blog/30.md)
 
-[](blog/31.md)
+[SSH与SSM学习之SSH实现CRM练习11——文件上传原理](blog/31.md)
 
 [](blog/32.md)
 
