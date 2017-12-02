@@ -52,9 +52,9 @@
 
 [SSH与SSM学习之SSH实现CRM练习12——文件上传原理](blog/32.md)
 
-[](blog/33.md)
+[SSH与SSM学习之SSH实现CRM练习13——添加联系人](blog/33.md)
 
-[](blog/34.md)
+[SSH与SSM学习之SSH实现CRM练习14——联系人列表](blog/34.md)
 
 [](blog/35.md)
 

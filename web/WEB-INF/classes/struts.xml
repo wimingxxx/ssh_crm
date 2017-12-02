@@ -39,5 +39,14 @@
         <action name="UploadFileAction" class="uploadFileAction" method="uploadFile">
             <result name="success"  >/jsp/upload.jsp</result>
         </action>
+
+        <action name="LinkManAction_*" class="linkManAction" method="{1}">
+            <result name="add"  >/jsp/linkman/add.jsp</result>
+            <result name="list"  >/jsp/linkman/list.jsp</result>
+            <result name="toList" type="redirectAction" >
+                <param name="namespace">/</param>
+                <param name="actionName">LinkManAction_list</param>
+            </result>
+        </action>
     </package>
 </struts>

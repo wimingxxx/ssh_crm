@@ -30,7 +30,6 @@
 		 	级联操作: 简化操作.目的就是为了少些两行代码.
 		  -->
 		  <!-- 多的一方: 不能放弃维护关系的.外键字段就在多的一方.  -->
-		<many-to-one name="customer" column="lkm_cust_id" class="Customer"  >
-		</many-to-one>
+		<many-to-one name="customer" column="lkm_cust_id" class="Customer"  />
 	</class>
 </hibernate-mapping>

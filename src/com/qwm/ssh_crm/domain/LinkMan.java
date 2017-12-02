@@ -32,17 +32,32 @@ public class LinkMan {
 	private Customer customer ;
 	
 	//----------------------------------------------
-	//不与数据库中的列对应,只为了接收表单参数
-	private Long cust_id;
-	
-	
-	
-	public Long getCust_id() {
-		return cust_id;
+//	//不与数据库中的列对应,只为了接收表单参数
+//	private Long cust_id;
+//
+//
+//
+//	public Long getCust_id() {
+//		return cust_id;
+//	}
+//	public void setCust_id(Long cust_id) {
+//		this.cust_id = cust_id;
+//}
+
+	public String getLkm_gender_s() {
+		if(lkm_gender==null){
+			return "";
+		}
+		switch (lkm_gender) {
+			case '1':
+				return "男";
+			case '2':
+				return "女";
+			default:
+				return "";
+		}
 	}
-	public void setCust_id(Long cust_id) {
-		this.cust_id = cust_id;
-	}
+
 	public Customer getCustomer() {
 		return customer;
 	}

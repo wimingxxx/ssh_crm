@@ -89,6 +89,10 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean name="linkManDao" class="com.qwm.ssh_crm.dao.impl.LinkManDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
     <!--Service配置-->
     <bean name="userService" class="com.qwm.ssh_crm.service.impl.UserServiceImpl">
         <property name="ud" ref="userDao"/>
@@ -100,6 +104,10 @@
 
     <bean name="baseDictService" class="com.qwm.ssh_crm.service.impl.BaseDictServiceImpl">
         <property name="bdd" ref="baseDictDao"/>
+    </bean>
+
+    <bean name="linkManService" class="com.qwm.ssh_crm.service.impl.LinkManServiceImpl">
+        <property name="lmd" ref="linkManDao"/>
     </bean>
 
     <!--Action配置 手动组装依赖  必须配置为多例模式-->
@@ -116,6 +124,10 @@
     </bean>
 
     <bean name="uploadFileAction" class="com.qwm.ssh_crm.web.action.UploadFileAction" scope="prototype">
+    </bean>
+
+    <bean name="linkManAction" class="com.qwm.ssh_crm.web.action.LinkManAction" scope="prototype">
+        <property name="lms" ref="linkManService"/>
     </bean>
 
 </beans>
