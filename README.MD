@@ -46,11 +46,11 @@
 
 [SSH与SSM学习之SSH实现CRM练习09——新增客户](blog/29.md)
 
-[SSH与SSM学习之SSH实现CRM练习10——文件上传](blog/30.md)
+[SSH与SSM学习之SSH实现CRM练习10——编辑客户和删除客户](blog/30.md)
 
-[SSH与SSM学习之SSH实现CRM练习11——文件上传原理](blog/31.md)
+[SSH与SSM学习之SSH实现CRM练习11——文件上传](blog/31.md)
 
-[](blog/32.md)
+[SSH与SSM学习之SSH实现CRM练习12——文件上传原理](blog/32.md)
 
 [](blog/33.md)
 

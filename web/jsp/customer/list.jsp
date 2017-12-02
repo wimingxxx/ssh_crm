@@ -126,9 +126,9 @@
                                         <s:property value="#cust.cust_mobile"/>
                                     </TD>
                                     <TD>
-                                        <a href="${pageContext.request.contextPath }/customerServlet?method=edit&custId=${customer.cust_id}">修改</a>
+                                        <a href="${pageContext.request.contextPath }/CustomerAction_toEdit?cust_id=<s:property value="#cust.cust_id"/>">修改</a>
                                         &nbsp;&nbsp;
-                                        <a href="${pageContext.request.contextPath }/customerServlet?method=delete&custId=${customer.cust_id}">删除</a>
+                                        <a href="${pageContext.request.contextPath }/CustomerAction_delete?cust_id=<s:property value="#cust.cust_id"/>">删除</a>
                                     </TD>
                                 </TR>
                             </s:iterator>

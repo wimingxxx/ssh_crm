@@ -49,6 +49,21 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         return "toList";
     }
 
+    public String toEdit() throws Exception {
+
+        //1 获取 id 对应的用户
+        Customer cust =cs.getById(customer.getCust_id());
+        //2 把用户添加到 域中
+        ActionContext.getContext().put("customer",cust);
+        //3 并转发到编辑页面
+        return "edit";
+    }
+
+    public String delete() throws Exception{
+        cs.delete(customer.getCust_id());
+        return "toList";
+    }
+
     @Override
     public Customer getModel() {
         return customer;

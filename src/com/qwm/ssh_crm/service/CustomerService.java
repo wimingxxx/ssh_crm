@@ -13,4 +13,6 @@ import org.hibernate.criterion.DetachedCriteria;
 public interface CustomerService {
     public PageBean getPageBean(DetachedCriteria dc, Integer currentPage, Integer pageSize) ;
     void save(Customer customer);
+    Customer getById(Long cust_id);
+    void delete(Long cust_id);
 }
