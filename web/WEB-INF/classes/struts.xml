@@ -12,17 +12,37 @@
     <constant name="struts.objectFactory" value="spring"/>
 
     <package name="crm1" namespace="/" extends="struts-default">
+
+        <interceptors>
+            <!-- 注册拦截器 -->
+            <interceptor name="privilegeInterceptor" class="com.qwm.ssh_crm.web.intercreptor.PrivilegeInterceptor"></interceptor>
+            <!-- 配置拦截器栈 -->
+            <interceptor-stack name="myStack">
+                <interceptor-ref name="privilegeInterceptor">
+                    <param name="excludeMethods">login,regist,uploadFile</param>
+                </interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+            <!-- 指定默认拦截器栈 -->
+        </interceptors>
+        <!-- 指定默认拦截器栈 -->
+        <default-interceptor-ref name="myStack"></default-interceptor-ref>
+
+        <!-- 全局结果集配置 -->
+        <global-results>
+            <result name="toLogin" type="redirect" >/login.jsp</result>
+        </global-results>
         <!--全局允许方法调用-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
-
         <global-exception-mappings>
             <exception-mapping result="error" exception="java.lang.RuntimeException"></exception-mapping>
         </global-exception-mappings>
-
+        
         <!--class属性值，来自applicationContext.xml 中 Action的配置-->
         <action name="UserAction_*" class="userAction" method="{1}">
             <result name="toHome" type="redirect">/index.html</result>
             <result name="error">/login.jsp</result>
+            <result name="regist" >/regist.jsp</result>
         </action>
 
         <action name="CustomerAction_*" class="customerAction" method="{1}">

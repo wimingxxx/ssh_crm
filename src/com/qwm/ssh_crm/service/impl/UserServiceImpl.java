@@ -3,6 +3,7 @@ package com.qwm.ssh_crm.service.impl;
 import com.qwm.ssh_crm.dao.UserDao;
 import com.qwm.ssh_crm.domain.User;
 import com.qwm.ssh_crm.service.UserService;
+import com.qwm.ssh_crm.utils.Md5Utils;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
         if(existU==null){
             throw new RuntimeException("用户名不存在");
         }
+        u.setUser_password(Md5Utils.md5Encode(u.getUser_password()));
         if(!existU.getUser_password().equals(u.getUser_password())){
             throw new RuntimeException("密码错误");
         }
@@ -34,7 +36,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.REPEATABLE_READ,propagation = Propagation.REQUIRED,readOnly = false)
     public void saveUser(User u) {
+        //1 调用Dao根据注册的登陆名获得用户对象
+        //2 如果获得到user对象,用户名已经存在,抛出异常
+        //3 使用MD5对密码进行加密
+        //4 调用Dao执行保存
+        User existU = ud.getByUserCode(u.getUser_code());
+        if(existU!=null){
+            throw new RuntimeException("用户名已经存在了");
+        }
+        u.setUser_password(Md5Utils.md5Encode(u.getUser_password()));
         ud.save(u);
     }
 
