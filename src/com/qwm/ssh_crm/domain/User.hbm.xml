@@ -11,6 +11,11 @@
 		<property name="user_name"  ></property>
 		<property name="user_password"  ></property>
 		<property name="user_state"  ></property>
-	
+
+		<!-- 一对多 -->
+		<set name="saleVisits">
+			<key column="visit_user_id" ></key>
+			<one-to-many class="SaleVisit" />
+		</set>
 	</class>
 </hibernate-mapping>

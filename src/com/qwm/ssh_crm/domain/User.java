@@ -19,6 +19,16 @@ public class User {
 	private String user_name;
 	private String user_password;
 	private Character user_state;
+
+	//表达客户与拜访记录的一对多
+	private Set<SaleVisit> saleVisits = new HashSet<SaleVisit>();
+
+	public Set<SaleVisit> getSaleVisits() {
+		return saleVisits;
+	}
+	public void setSaleVisits(Set<SaleVisit> saleVisits) {
+		this.saleVisits = saleVisits;
+	}
 	public Long getUser_id() {
 		return user_id;
 	}

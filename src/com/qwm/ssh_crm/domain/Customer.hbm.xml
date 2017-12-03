@@ -19,5 +19,11 @@
 		<many-to-one name="cust_source" column="cust_source" class="BaseDict"></many-to-one>
 		<many-to-one name="cust_industry" column="cust_industry" class="BaseDict"></many-to-one>
 		<many-to-one name="cust_level" column="cust_level" class="BaseDict"></many-to-one>
+
+		<!-- 一对多 -->
+		<set name="saleVisits">
+			<key column="visit_cust_id" ></key>
+			<one-to-many class="SaleVisit" />
+		</set>
 	</class>
 </hibernate-mapping>

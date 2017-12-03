@@ -1,5 +1,8 @@
 package com.qwm.ssh_crm.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Customer {
 	
 	/*
@@ -25,6 +28,17 @@ public class Customer {
 	private BaseDict cust_source; //客户来源 cust_source.dict_id
 	private BaseDict cust_industry; //客户行业
 	private BaseDict cust_level; //客户级别
+
+	//表达客户与拜访记录的一对多
+	private Set<SaleVisit> saleVisits = new HashSet<SaleVisit>();
+
+
+	public Set<SaleVisit> getSaleVisits() {
+		return saleVisits;
+	}
+	public void setSaleVisits(Set<SaleVisit> saleVisits) {
+		this.saleVisits = saleVisits;
+	}
 
 	public Long getCust_id() {
 		return cust_id;

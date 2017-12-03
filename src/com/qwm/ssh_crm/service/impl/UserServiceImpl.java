@@ -1,12 +1,17 @@
 package com.qwm.ssh_crm.service.impl;
 
 import com.qwm.ssh_crm.dao.UserDao;
+import com.qwm.ssh_crm.domain.SaleVisit;
 import com.qwm.ssh_crm.domain.User;
 import com.qwm.ssh_crm.service.UserService;
 import com.qwm.ssh_crm.utils.Md5Utils;
+import com.qwm.ssh_crm.utils.PageBean;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author：qiwenming
@@ -52,5 +57,19 @@ public class UserServiceImpl implements UserService {
 
     public void setUd(UserDao ud) {
         this.ud = ud;
+    }
+
+    @Override
+    public PageBean getPageBean(DetachedCriteria dc, Integer currentPage, Integer pageSize) {
+        //1 调用Dao查询总记录数
+        Integer totalCount = ud.getTotalCount(dc);
+        //2 创建PageBean对象
+        PageBean pb = new PageBean(currentPage, totalCount, pageSize);
+        //3 调用Dao查询分页列表数据
+
+        List<User> list = ud.getPageList(dc,pb.getStart(),pb.getPageSize());
+        //4 列表数据放入pageBean中.并返回
+        pb.setList(list);
+        return pb;
     }
 }

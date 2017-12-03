@@ -93,6 +93,10 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean name="saleVisitDao" class="com.qwm.ssh_crm.dao.impl.SaleVisitDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
     <!--Service配置-->
     <bean name="userService" class="com.qwm.ssh_crm.service.impl.UserServiceImpl">
         <property name="ud" ref="userDao"/>
@@ -108,6 +112,10 @@
 
     <bean name="linkManService" class="com.qwm.ssh_crm.service.impl.LinkManServiceImpl">
         <property name="lmd" ref="linkManDao"/>
+    </bean>
+
+    <bean name="saleVisitService" class="com.qwm.ssh_crm.service.impl.SaleVisitServiceImpl">
+        <property name="svd" ref="saleVisitDao"/>
     </bean>
 
     <!--Action配置 手动组装依赖  必须配置为多例模式-->
@@ -128,6 +136,10 @@
 
     <bean name="linkManAction" class="com.qwm.ssh_crm.web.action.LinkManAction" scope="prototype">
         <property name="lms" ref="linkManService"/>
+    </bean>
+
+    <bean name="saleVisitAction" class="com.qwm.ssh_crm.web.action.SaleVisitAction" scope="prototype">
+        <property name="svs" ref="saleVisitService"/>
     </bean>
 
 </beans>
